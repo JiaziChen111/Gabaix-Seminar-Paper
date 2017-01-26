@@ -1,0 +1,103 @@
+\documentclass[12pt,
+bibtotoc,liststotoc,appendixprefix
+twoside,paper=a4,headings=small]{scrbook}
+%
+% Packages
+% -----------------------------------
+\usepackage[
+  paper=a4paper,
+  left=12.5mm,
+  right=25mm,
+  top=25mm,
+  bottom=50mm,
+  bindingoffset=10mm]{geometry}		% page and binding margins can be adjust here
+  
+\usepackage{apacite} 				% % literature-References: American Psycholog. Assoc.
+\usepackage{natbib}					
+
+\setcitestyle{round,aysep={}} 		% indexation in (round) parentheses, between the author year
+\usepackage[latin1]{inputenc} 		% mutated vowel (Umlaute) in the text
+\usepackage[english]{babel}				% orthography
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}				% font family
+\usepackage{microtype}				% for micro typography (for a better typeface)
+
+\usepackage{graphicx} 				% for including graphs (pdf,png - but do avoid jpg)
+\graphicspath{{./Bilder/}}          % path to the pictures
+
+\usepackage{url}					%  formatting URL (e.g. in the literature) 
+\usepackage[colorlinks,linkcolor=black,citecolor=black,urlcolor=black]{hyperref} 				% For hperlinks in PDF-documents   
+  
+\usepackage{tabularx} 				% for a better configuration of tables
+\usepackage{longtable} 		
+\usepackage{multicol}				
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{tabularx}
+		
+\usepackage[active]{srcltx}
+
+\usepackage{listings}				% algorithm
+
+\usepackage{mdwlist}				% lists
+
+\usepackage{setspace} 				% setting of the lines (rows)
+\newtheorem{mydef}{Merksatz}  		% if examples or mnemotechnic verses are used with continuous numeration 
+\newtheorem{bsp}{Beispiel}
+
+\usepackage{todonotes}				% for the creation of ToDos in the editor
+
+\usepackage{lscape}					% for the rotation of pages
+
+\usepackage{amsmath}				% for the writting of mathematical formula
+
+\usepackage{calc}
+
+\usepackage{footnote}				% footnotes
+\usepackage{tablefootnote}			% footnotes in tables
+
+%\clubpenalty = 10000
+%\widowpenalty = 10000 \displaywidowpenalty = 10000
+
+\hyphenation{voll-st\"andigen}		% for defining word devisions globally
+
+\setcounter{tocdepth}{1}			% levels which are displayed in the table of contents
+
+
+% Document
+% -----------------------------------
+\begin{document}
+
+\frontmatter 
+    \include{./title/titleGabaix} 			% title
+    \newpage
+    \clearpage{\pagestyle{empty}\cleardoublepage}
+        \onehalfspacing                  	% line spacing which is set to 1.5 from this point on
+    \tableofcontents 					% table of contents
+    \clearpage{\pagestyle{empty}\cleardoublepage} 
+    
+    \listoffigures 					 	% list of figures
+    \clearpage{\pagestyle{empty}\cleardoublepage}
+    
+    \listoftables						% list of tables
+    \clearpage{\pagestyle{empty}\cleardoublepage}
+% -----------------------------------
+\mainmatter 							% the respective chapters
+    \input{./chapter/introduction}
+    \clearpage{\pagestyle{empty}\cleardoublepage}		% delets header lines and page numerbing on the last page of a chapter as long as there is no text anymore
+    \input{./chapter/literature}
+		\clearpage{\pagestyle{empty}\cleardoublepage}
+    \input{./chapter/model}
+    \clearpage{\pagestyle{empty}\cleardoublepage}
+    \input{./chapter/results}
+    \clearpage{\pagestyle{empty}\cleardoublepage}
+    \input{./chapter/conclusion}
+    \clearpage{\pagestyle{empty}\cleardoublepage}
+
+% -----------------------------------
+\backmatter 
+\bibliographystyle{apacite}				% by natbib in german
+\bibliography{./literature/sources}		% including literature sources
+\input{./chapter/declaration} 			% % statutory declaration - "`Eidesstattliche Erklärung"'
+
+\end{document}
